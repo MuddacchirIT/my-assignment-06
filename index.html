@@ -26,19 +26,21 @@
 <body>
     <!-- navbar start here -->
     <section class="max-w-[1920px] mx-auto bg-[#15803D]">
-        <nav class="w-[90%] mx-auto flex flex-col md:flex-row h-[200px] md:h-full justify-between items-center py-6">
-
-            <h1 class="text-3xl font-semibold text-[#FFFFFF]">Green Earth</h1>
-
-            <div class="flex space-x-8 text-[#FFFFFF] text-xl">
-                <h3>About</h3>
-                <h3>Gallery</h3>
-                <h3>Plant a Tree</h3>
+        <nav class="max-w-[1700px] mx-auto flex flex-col md:flex-row items-center py-6 px-4">
+            <div class="flex items-center gap-3 flex-1">
+                <img src="./assets/about.png" class="w-12 h-12 object-contain rounded-lg" alt="">
+                <h1 class="text-3xl font-semibold text-white">Green Earth</h1>
             </div>
-            <button
-                class="bg-[#FACC15] w-[38%] md:w-auto h-12 text-xl font-semibold text-[#15803D] px-8 rounded-full text-center">Plant
-                a
-                Tree</button>
+            <div class="flex flex-1 justify-center space-x-8 text-white text-xl">
+                <h3 class="">About</h3>
+                <h3 class="">Gallery</h3>
+                <h3 class="">Plant a Tree</h3>
+            </div>
+            <div class="flex-1 flex justify-end">
+                <button
+                    class="bg-[#FACC15] h-12 text-xl font-semibold text-[#15803D] px-8 rounded-full text-center hover:opacity-90 transition">
+                    Plant a Tree
+                </button>
             </div>
         </nav>
     </section>
@@ -71,10 +73,21 @@
             <!-- Categories -->
             <div
                 class="order-first md:order-none row-span-2 bg-white shadow-lg border-none rounded-xl h-full w-full max-w-md mx-auto min-h-screen">
-                <h2 class="text-2xl font-bold text-start p-5">Categories</h2>
-                <div class="flex justify-between gap-4 py-2">
-
-                </div>
+                <h2 class="text-2xl font-bold text-center p-5">Categories</h2>
+                <ul class="flex flex-col justify-between items-center gap-4 p-4">
+                    <li class="w-full text-xl py-4 text-center hover:bg-green-500 hover:text-white cursor-pointer">
+                        Bayena Tree
+                    </li>
+                    <li class="w-full text-xl py-4 text-center hover:bg-green-500 hover:text-white cursor-pointer">
+                        Bayena Tree
+                    </li>
+                    <li class="w-full text-xl py-4 text-center  hover:bg-green-500 hover:text-white cursor-pointer">
+                        Bayena Tree
+                    </li>
+                    <li class="w-full text-xl py-4 text-center hover:bg-green-500 hover:text-white cursor-pointer">
+                        Bayena Tree
+                    </li>
+                </ul>
             </div>
             <!-- tree-01 -->
             <div
