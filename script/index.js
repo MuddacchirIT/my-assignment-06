@@ -15,9 +15,10 @@ for (let name of names){
                     <div class="bg-gray-100 rounded-t-xl h-[320px] w-full overflow-hidden"><img src="${name.image}" class="h-full w-full object-cover" alt="">
                     </div>
                 </div>
-                <div class="space-y-4 p-5">
+                <div class="space-y-5 p-6">
                     <h2 class="text-2xl font-bold text-start">${name.name}</h2>
-                    <p class="text-start text-xl">${name.description}</p>
+                    <p class="text-start text-xl line-clamp-2">
+                    ${name.description}</p>
                     <div class="flex justify-between">
                         <button
                             class="bg-white text-gray-600 text-lg font-semibold w-full rounded-lg border border-gray-300 transition-all duration-300 hover:bg-gray-200">Shade
