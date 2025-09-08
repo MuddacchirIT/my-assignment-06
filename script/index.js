@@ -52,19 +52,56 @@ for (let tree of trees){
                         </div>
                     </div>
                     <button
-                        class="bg-[#15803D] w-full h-10 text-xl font-semibold text-[#FFFFFF] px-8 rounded-full text-center mx-auto hover:opacity-80 transition">Add
+                        class="add-to-cart bg-[#15803D] w-full h-10 text-xl font-semibold text-[#FFFFFF] px-8 rounded-full text-center mx-auto hover:opacity-80 transition">Add
                         to Cart</button>
                 </div>
              </div>`;
-            plantsContainer.appendChild(btnDiv);   
-        }
-    };
+            plantsContainer.appendChild(btnDiv); 
 
+    const addBtn = btnDiv.querySelector(".add-to-cart");
+    addBtn.addEventListener("click", () => {
+    cart.push({ name: tree.name, price: tree.price });
+    updateCart();
+    alert(`${tree.name} has been added to the cart.`);
+    });
+           
+  }
+};
+
+let cart = [];
 let allPlants = [];
 
 const filterPlants = (categoryName) => {
     const filtered = allPlants.filter(p => p.category === categoryName);
     displayPlants(filtered);
+};
+
+const removeFromCart = (index) => {
+cart.splice(index, 1);
+updateCart();
+};
+
+const updateCart = () => {
+const cartItems = document.getElementById("cart-items");
+const cartTotal = document.getElementById("cart-total");
+cartItems.innerHTML = "";
+
+let total = 0;
+    cart.forEach((item, index) => {
+    total += item.price;
+    const li = document.createElement("li");
+    li.classList.add("flex", "justify-between", "items-center", "text-black","font-semibold", "text-lg", "bg-gray-50", "px-3", "py-2", "rounded");
+    li.innerHTML = `
+    <div class="flex justify-between items-center gap-3">
+    <div class="flex flex-col">
+    <div>${item.name}</div>
+    <div"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${item.price}</div></div>
+    <button onclick="removeFromCart(${index})" 
+    class="text-red-500 hover:text-red-700 font-bold"><i class="fa-solid fa-xmark"></i></button>
+    </div>`;
+        cartItems.appendChild(li);
+     });
+    cartTotal.textContent = total;
 };
 
 loadCategories();
