@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <!-- navbar start here -->
+    <!-- navbar section start here -->
     <section class="max-w-[1920px] mx-auto bg-[#15803D]">
         <nav class="max-w-[1700px] mx-auto flex flex-col md:flex-row items-center py-6 px-4">
             <div class="flex items-center gap-3 flex-1">
@@ -58,7 +58,6 @@
                 <p class="text-[#14532d] text-xl md:text-xl text-center max-w-md lg:max-w-full mx-auto break-words">
                     Join our mission to plant 1 million trees and make the Earth greener for future generations.
                 </p>
-
                 <button
                     class="bg-[#FACC15] w-[30%] md:w-auto h-12 text-xl font-semibold text-[#15803D] px-8 rounded-full text-center mx-auto hover:opacity-60 transition">Get
                     Involved</button>
@@ -68,13 +67,27 @@
             </div>
         </div>
     </section>
+    <!-- modal -->
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+    <dialog id="details_modal" class="modal">
+        <div class="modal-box ml-4 w-[95%] md:w-7/11 max-w-full md:max-w-3xl">
+            <div id="details-container" class=""></div>
+            <div class="modal-action">
+                <form method="dialog">
+
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
     <!-- dynamic grid section -->
     <div class="max-w-[1920px] mx-auto px-2 mt-10">
         <div class="grid grid-cols-1 md:grid-cols-6 gap-3 items-start">
             <aside class="md:col-span-1 bg-white shadow-lg rounded-xl p-4">
                 <h2 class="text-2xl font-bold text-center text-[#14532D] mb-4">Categories</h2>
 
-                <!-- categories -->
+                <!-- categories are here -->
 
                 <li id="categories-container" class="flex flex-col gap-2"></li>
             </aside>
@@ -84,16 +97,11 @@
                 </div>
             </main>
             <aside class="md:col-span-1 bg-white shadow-lg rounded-xl p-4">
-                <h2 class="text-2xl font-semibold text-start pl-3">Your Cart</h2>
-
-
+                <h2 class="text-2xl font-semibold text-start pl-3 pb-2">Your Cart</h2>
                 <ul id="cart-items" class="space-y-2"></ul>
                 <hr class="my-3">
                 <h3 class="text-xl font-semibold text-center">Total:<i
-                        class="fa-solid fa-bangladeshi-taka-sign"></i><span id="cart-total">0</span></h3>
-
-
-
+                        class="fa-sharp fa-solid fa-bangladeshi-taka-sign fa-xs"></i><span id="cart-total">0</span></h3>
                 <div class="mt-4 text-gray-500 text-center">
                 </div>
             </aside>
@@ -104,15 +112,15 @@
         <h2 class="text-3xl font-semibold md:text-4xl text-[#14532D] text-center py-8">About the Campaign</h2>
         <div class="flex flex-col md:flex-row justify-between gap-6 md:gap-2 p-4 md:p-6">
             <div class="w-full md:w-1/2 flex justify-center">
-                <img src="./assets/about.png" alt="About Green Earth" class="w-full h-auto rounded-lg" />
+                <img src="./assets/about.png" alt="About Green Earth" class="w-full h-auto rounded-lg pl-4 md:pl-0" />
             </div>
             <div class="w-full md:w-1/2 flex flex-col justify-center items-start md:items-start gap-4 ">
-                <p class="text-base md:text-xl pl-5 text-gray-800">
+                <p class="text-lg md:text-xl pl-5 text-gray-800">
                     Green Earth is a global tree plantation initiative dedicated to fighting climate
                     change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our
                     campaign, you help restore forests, create habitats for wildlife, and combat global warming.
                 </p>
-                <ul class="list-disc text-xl pl-10 space-y-2 text-gray-800">
+                <ul class="list-disc text-lg md:text-xl pl-10 space-y-2 text-gray-800">
                     <li>Restoration of natural habitats</li>
                     <li>Improvement of air quality</li>
                     <li>Support for local communities</li>
@@ -170,16 +178,6 @@
             © 2025 Green Earth. All Rights Reserved.
         </h2>
     </footer>
-
-    <div class="p-6 bg-white shadow-md rounded-lg max-w-md mx-auto mt-6">
-        <h2 class="text-2xl font-bold mb-4">🛒 Cart</h2>
-        <ul id="cart-items" class="space-y-2"></ul>
-        <hr class="my-3">
-        <h3 class="text-xl font-semibold">Total: <span id="cart-total">0</span> ৳</h3>
-    </div>
-
-
-
     <script src="./script/index.js"></script>
 </body>
 

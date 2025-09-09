@@ -41,32 +41,53 @@ for (let tree of trees){
                     </div>
                 </div>
                 <div class="space-y-5 p-6">
-                    <h2 class="text-2xl font-bold text-start">${tree.name}</h2>
+                    <h2 onclick="loadDetails(${tree.id})" class="text-2xl font-bold text-start">${tree.name}</h2>
                     <p class="text-start text-xl line-clamp-2">
                     ${tree.description}</p>
                     <div class="flex justify-between">
                         <button
                             class="bg-white text-gray-600 text-lg font-semibold w-full rounded-lg border border-gray-300 transition-all duration-300 hover:bg-gray-200">${tree.category}</button>
-                        <div class="text-[#00A63E] text-lg font-semibold w-full">
+                        <div class="text-[#15803D100] text-lg font-semibold w-full">
                             <i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}
                         </div>
                     </div>
                     <button
-                        class="add-to-cart bg-[#15803D] w-full h-10 text-xl font-semibold text-[#FFFFFF] px-8 rounded-full text-center mx-auto hover:opacity-80 transition">Add
+                        class="add-to-cart bg-[#15803D95] w-full h-10 text-xl font-semibold text-[#FFFFFF] px-8 rounded-full text-center mx-auto hover:opacity-70 transition">Add
                         to Cart</button>
                 </div>
              </div>`;
             plantsContainer.appendChild(btnDiv); 
-
     const addBtn = btnDiv.querySelector(".add-to-cart");
     addBtn.addEventListener("click", () => {
     cart.push({ name: tree.name, price: tree.price });
     updateCart();
     alert(`${tree.name} has been added to the cart.`);
-    });
-           
+    });         
   }
 };
+
+const loadDetails = async(plantsId) => {
+    const url = `https://openapi.programming-hero.com/api/plant/${plantsId}`;
+    const res = await fetch(url);
+    const details = await res.json();
+    displayDetails(details.plants);
+};
+
+const displayDetails = (plant) => {
+    console.log(plant);
+    const detailsBox = document.getElementById("details-container");
+    detailsBox.innerHTML = `<h2 class="text-2xl font-bold mb-2">${plant.name}</h2>
+                        <div class=" bg-white shadow-lg text-center rounded-xl h-full flex flex-row justify-start w-full max-w-3xl mx-auto">
+                            <div class="bg-gray-100 rounded-xl h-[420px] w-full overflow-hidden"><img src="${plant.image}" class="h-full w-full object-cover" alt="">
+                            </div>
+                        </div>
+                    <h2 class="text-xl font-bold my-1"><span class="text-2xl font-semibold">Category:</span> ${plant.category}</h2>
+                    <h4 class="text-lg font-semibold mb-1"><span class="text-xl font-semibold">Price:</span> <i class="fa-sharp fa-solid fa-bangladeshi-taka-sign fa-xs"></i>${plant.price}</h4>
+                   <p class="text-lg"><span class="text-xl font-semibold">Description:</span> ${plant.description}</p>
+                    </div>
+             </div>`;
+    document.getElementById("details_modal").showModal();
+}
 
 let cart = [];
 let allPlants = [];
@@ -90,14 +111,14 @@ let total = 0;
     cart.forEach((item, index) => {
     total += item.price;
     const li = document.createElement("li");
-    li.classList.add("flex", "justify-between", "items-center", "text-black","font-semibold", "text-lg", "bg-gray-50", "px-3", "py-2", "rounded");
+    li.classList.add("flex", "justify-between", "items-center", "text-black","font-semibold", "text-xl", "bg-gray-50", "px-3", "py-2", "rounded");
     li.innerHTML = `
     <div class="flex justify-between items-center gap-3">
     <div class="flex flex-col">
     <div>${item.name}</div>
-    <div"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${item.price}</div></div>
+    <div"><i class="fa-sharp fa-solid fa-bangladeshi-taka-sign fa-xs"></i>${item.price}</div></div>
     <button onclick="removeFromCart(${index})" 
-    class="text-red-500 hover:text-red-700 font-bold"><i class="fa-solid fa-xmark"></i></button>
+    class="text-red-500 hover:text-red-800 font-bold"><i class="fa-solid fa-xmark fa-lg"></i></button>
     </div>`;
         cartItems.appendChild(li);
      });
