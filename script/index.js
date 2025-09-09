@@ -46,7 +46,7 @@ for (let tree of trees){
                     ${tree.description}</p>
                     <div class="flex justify-between">
                         <button
-                            class="bg-white text-gray-600 text-lg font-semibold w-full rounded-lg border border-gray-300 transition-all duration-300 hover:bg-gray-200">${tree.category}</button>
+                            class="bg-white text-gray-500 text-lg font-semibold w-full rounded-lg border border-gray-300 transition-all duration-300 hover:bg-gray-200">${tree.category}</button>
                         <div class="text-[#15803D100] text-lg font-semibold w-full">
                             <i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}
                         </div>
@@ -62,8 +62,7 @@ for (let tree of trees){
     cart.push({ name: tree.name, price: tree.price });
     updateCart();
     alert(`${tree.name} has been added to the cart.`);
-    });  
-          
+    });         
   }
 manageSpinner(false);  
 };
@@ -91,12 +90,10 @@ const displayDetails = (plant) => {
 const manageSpinner = (status) => {
     const spinner = document.getElementById("spinner");
     const container = document.getElementById("categories-container");
-
     if (!spinner || !container) {
         console.error("Spinner or container element not found!");
         return;
     }
-
     if (status) {
         spinner.classList.remove("hidden");
         container.classList.add("hidden");
