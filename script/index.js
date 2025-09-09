@@ -1,4 +1,5 @@
 const loadCategories = () => {
+    manageSpinner(true);
     const url ="https://openapi.programming-hero.com/api/categories";
     fetch(url)
     .then(res => res.json())
@@ -15,8 +16,10 @@ const displayCategories = (names) => {
             class="w-full text-lg py-2 text-center hover:bg-green-400 rounded-lg hover:text-white cursor-pointer">${name.category_name}</button>`;
             categoriesContainer.append(buttonsDiv);
         });
+        
     };
 const loadPlants = () => {
+  
     fetch("https://openapi.programming-hero.com/api/plants")
     .then(res=> res.json())
     .then((json) => {
@@ -59,8 +62,10 @@ for (let tree of trees){
     cart.push({ name: tree.name, price: tree.price });
     updateCart();
     alert(`${tree.name} has been added to the cart.`);
-    });         
+    });  
+          
   }
+manageSpinner(false);  
 };
 const loadDetails = async(plantsId) => {
     const url = `https://openapi.programming-hero.com/api/plant/${plantsId}`;
@@ -83,7 +88,23 @@ const displayDetails = (plant) => {
              </div>`;
     document.getElementById("details_modal").showModal();
 }
+const manageSpinner = (status) => {
+    const spinner = document.getElementById("spinner");
+    const container = document.getElementById("categories-container");
 
+    if (!spinner || !container) {
+        console.error("Spinner or container element not found!");
+        return;
+    }
+
+    if (status) {
+        spinner.classList.remove("hidden");
+        container.classList.add("hidden");
+    } else {
+        spinner.classList.add("hidden");
+        container.classList.remove("hidden");
+    }
+};
 let cart = [];
 let allPlants = [];
 
