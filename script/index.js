@@ -7,16 +7,28 @@ const loadCategories = () => {
     });
 };
 const displayCategories = (names) => {
-    console.log(names);
     const categoriesContainer = document.getElementById("categories-container")
     categoriesContainer.innerHTML = "";
     names.forEach(name => {
             const buttonsDiv = document.createElement("div");
-            buttonsDiv.innerHTML = `<button onclick="filterPlants('${name.category_name}')"
-            class="w-full text-lg py-2 text-center hover:bg-green-600 rounded-lg hover:text-white cursor-pointer">${name.category_name}</button>`;
+            buttonsDiv.innerHTML = `<button id="active-btn-${name.id}" onclick="setActiveBtn(${name.id}); filterPlants('${name.category_name}')"
+            class="w-full text-lg py-2 text-center hover:bg-green-400 rounded-lg hover:text-white cursor-pointer">${name.category_name}</button>`;
             categoriesContainer.append(buttonsDiv);
         });
     };
+
+const setActiveBtn = (id) => {
+    
+    const allButtons = document.querySelectorAll("[id^='active-btn-']");
+    allButtons.forEach(btn => {
+        btn.classList.remove("bg-green-700", "text-white");
+        btn.classList.add();
+    });
+
+    const activeBtn = document.getElementById(`active-btn-${id}`);
+    activeBtn.classList.remove();
+    activeBtn.classList.add("bg-green-700", "text-white");
+};
 
 const loadPlants = () => {
     fetch("https://openapi.programming-hero.com/api/plants")
