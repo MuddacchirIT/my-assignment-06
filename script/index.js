@@ -16,20 +16,6 @@ const displayCategories = (names) => {
             categoriesContainer.append(buttonsDiv);
         });
     };
-
-const setActiveBtn = (id) => {
-    
-    const allButtons = document.querySelectorAll("[id^='active-btn-']");
-    allButtons.forEach(btn => {
-        btn.classList.remove("bg-green-700", "text-white");
-        btn.classList.add();
-    });
-
-    const activeBtn = document.getElementById(`active-btn-${id}`);
-    activeBtn.classList.remove();
-    activeBtn.classList.add("bg-green-700", "text-white");
-};
-
 const loadPlants = () => {
     fetch("https://openapi.programming-hero.com/api/plants")
     .then(res=> res.json())
@@ -38,7 +24,6 @@ const loadPlants = () => {
             displayPlants(allPlants);
     });
 };
-
 const displayPlants = (trees) => {
 const plantsContainer = document.getElementById("plants-container")
 plantsContainer.innerHTML = "";
@@ -64,7 +49,7 @@ for (let tree of trees){
                         </div>
                     </div>
                     <button
-                        class="add-to-cart bg-[#15803D95] w-full h-10 text-xl font-semibold text-[#FFFFFF] px-8 rounded-full text-center mx-auto hover:opacity-70 transition">Add
+                        class="add-to-cart bg-[#15803D99] w-full h-10 text-xl font-semibold text-[#FFFFFF] px-8 rounded-full text-center mx-auto hover:opacity-70 transition">Add
                         to Cart</button>
                 </div>
              </div>`;
@@ -77,14 +62,12 @@ for (let tree of trees){
     });         
   }
 };
-
 const loadDetails = async(plantsId) => {
     const url = `https://openapi.programming-hero.com/api/plant/${plantsId}`;
     const res = await fetch(url);
     const details = await res.json();
     displayDetails(details.plants);
 };
-
 const displayDetails = (plant) => {
     console.log(plant);
     const detailsBox = document.getElementById("details-container");
@@ -112,6 +95,17 @@ const filterPlants = (categoryName) => {
 const removeFromCart = (index) => {
 cart.splice(index, 1);
 updateCart();
+};
+
+const setActiveBtn = (id) => {
+    const allButtons = document.querySelectorAll("[id^='active-btn-']");
+    allButtons.forEach(btn => {
+        btn.classList.remove("bg-green-700", "text-white");
+        btn.classList.add();
+    });
+    const activeBtn = document.getElementById(`active-btn-${id}`);
+    activeBtn.classList.remove();
+    activeBtn.classList.add("bg-green-700", "text-white");
 };
 
 const updateCart = () => {
