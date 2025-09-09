@@ -4,6 +4,6 @@
 
 3. Answer:  Arrow function is a shorter syntax for writing functions in ES6.
 
-4. Answer:  Destructuring assignment is a kind of featuring which are collected values from array or object and stored a varible, As a result shorter code and to read easier.
+4. Answer:  Destructuring assignment is a kind of featuring which are collected values from array or object and stored variables. As a result, created shorter code and to read easier.
 
 5. Answer:  Template literals work writing for newly string. It is used for backticks sign. String is easier, clean and strong by template literals.
